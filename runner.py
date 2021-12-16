@@ -54,6 +54,7 @@ def Call_strategy():
     if inp == 'crbs':
         print("This Strategy requires you to: Buy 2 OTM CE, Sell ITM CE\n")
         #take input strategy parameter LS, HS, hsp, lsp,
+        LS, HS, hsp, lsp = inp_parameters()
         crbs = Strategy(LS, spot, HS, hsp, lsp)
         print(crbs.call_ratio_back_spread())
         
