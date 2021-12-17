@@ -47,6 +47,9 @@ class Strategy():
         print(self.lsdf)
         plt.plot(self.lsdf['market_expiry'],self.lsdf['strategy_payoff'])
         plt.axhline(y=0, color='r', linestyle='-')
+        plt.title('Payoff of Long Strangle')
+        plt.xlabel('Market Expiry')
+        plt.ylabel('Payoff')
         plt.show()
         
     def short_strangle(self):#sstrg
@@ -64,6 +67,9 @@ class Strategy():
         print(self.lsdf)
         plt.plot(self.lsdf['market_expiry'], self.lsdf['strategy_payoff'])
         plt.axhline(y=0, color='r', linestyle='-')
+        plt.title('Payoff of Short Strangle')
+        plt.xlabel('Market Expiry')
+        plt.ylabel('Payoff')
         plt.show()
     
     def long_straddle(self):#lstrd
@@ -81,6 +87,9 @@ class Strategy():
         print(self.lsdf)
         plt.plot(self.lsdf['market_expiry'],self.lsdf['strategy_payoff'])
         plt.axhline(y=0, color='r', linestyle='-')
+        plt.title('Payoff of Long Straddle')
+        plt.xlabel('Market Expiry')
+        plt.ylabel('Payoff')
         plt.show()
         
     def short_straddle(self):#sstrd
@@ -98,6 +107,9 @@ class Strategy():
         print(self.lsdf)
         plt.plot(self.lsdf['market_expiry'],self.lsdf['strategy_payoff'])
         plt.axhline(y=0, color='r', linestyle='-')
+        plt.title('Payoff of Short Straddle')
+        plt.xlabel('Market Expiry')
+        plt.ylabel('Payoff')
         plt.show()
     
     def bull_put_spread(self):#bps
@@ -116,6 +128,9 @@ class Strategy():
         print(self.lsdf)
         plt.plot(self.lsdf['market_expiry'],self.lsdf['strategy_payoff'])
         plt.axhline(y=0, color='r', linestyle='-')
+        plt.title('Payoff of Bull Put Spread')
+        plt.xlabel('Market Expiry')
+        plt.ylabel('Payoff')
         plt.show()
         
     def bull_call_spread(self):#bcs
@@ -134,6 +149,9 @@ class Strategy():
         print(self.lsdf)
         plt.plot(self.lsdf['market_expiry'],self.lsdf['strategy_payoff'])
         plt.axhline(y=0, color='r', linestyle='-')
+        plt.title('Payoff of Bull Call Spread')
+        plt.xlabel('Market Expiry')
+        plt.ylabel('Payoff')
         plt.show()
     
     def bear_put_spread(self):#beps
@@ -152,6 +170,9 @@ class Strategy():
         print(self.lsdf)
         plt.plot(self.lsdf['market_expiry'], self.lsdf['strategy_payoff'])
         plt.axhline(y=0, color='r', linestyle='-')
+        plt.title('Payoff of Bear Put Spread')
+        plt.xlabel('Market Expiry')
+        plt.ylabel('Payoff')
         plt.show()
         
     def bear_call_spread(self):#becs
@@ -170,6 +191,9 @@ class Strategy():
         print(self.lsdf)
         plt.plot(self.lsdf['market_expiry'],self.lsdf['strategy_payoff'])
         plt.axhline(y=0, color='r', linestyle='-')
+        plt.title('Payoff of Bear Call Spread')
+        plt.xlabel('Market Expiry')
+        plt.ylabel('Payoff')
         plt.show()
     
     def call_ratio_back_spread(self):#crbs
@@ -189,6 +213,9 @@ class Strategy():
         print(self.lsdf)
         plt.plot(self.lsdf['market_expiry'],self.lsdf['strategy_payoff'])
         plt.axhline(y=0, color='r', linestyle='-')
+        plt.title('Payoff of Call Ratio Back Spread')
+        plt.xlabel('Market Expiry')
+        plt.ylabel('Payoff')
         plt.show()
         
     def put_ratio_back_spread(self):#prbs
@@ -209,5 +236,8 @@ class Strategy():
         print(self.lsdf)
         plt.plot(self.lsdf['market_expiry'], self.lsdf['strategy_payoff'])
         plt.axhline(y=0, color='r', linestyle='-')
+        plt.title('Payoff of Put Ratio Back Spread')
+        plt.xlabel('Market Expiry')
+        plt.ylabel('Payoff')
         plt.show()
    
