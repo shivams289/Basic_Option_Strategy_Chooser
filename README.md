@@ -5,6 +5,6 @@
 - We have still got to take care of the greeks
 
 ## How to use this:
-- CLone this repo using `git clone <https link of this repo>`
+- Fork this repo to your github then Clone this repo using `git clone <https link of this repo>`
 - change directory to this repo `cd Basic_Option_Strategy_Chooser`
 - Run the runner.py using `python runner.py` and follow along
