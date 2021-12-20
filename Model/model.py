@@ -33,6 +33,7 @@ class Strategy():
         self.lsdf = pd.DataFrame({'market_expiry':self.market_expiry, 'mx_%deviation':deviation})
         
     def long_strangle(self):#lstrg
+        print('\n--------------------------------Output Parameters--------------------------------\n')
         print(f"Buy OTM {self.HS} CE, Buy OTM {self.LS} PE")
         ce_payoff = [(max(expiry - self.HS, 0 ) - self.premium1) for expiry in self.market_expiry]
         pe_payoff = [(max(self.LS - expiry, 0 ) - self.premium2) for expiry in self.market_expiry]
@@ -53,6 +54,8 @@ class Strategy():
         plt.show()
         
     def short_strangle(self):#sstrg
+        print('\n--------------------------------Output Parameters--------------------------------\n')
+        
         print(f"Sell OTM {self.HS} CE, Sell OTM {self.LS} PE")
         ce_payoff = [(self.premium1 - max(expiry - self.HS, 0 )) for expiry in self.market_expiry]
         pe_payoff = [(self.premium2 - max(self.LS - expiry, 0 ) ) for expiry in self.market_expiry]
@@ -73,6 +76,8 @@ class Strategy():
         plt.show()
     
     def long_straddle(self):#lstrd
+        print('\n--------------------------------Output Parameters--------------------------------\n')
+        
         print(f"Buy ATM {self.HS} CE, Buy ATM {self.LS} PE")
         ce_payoff = [(max(expiry - self.HS, 0 ) - self.premium1) for expiry in self.market_expiry]
         pe_payoff = [(max(self.LS - expiry, 0 ) - self.premium2) for expiry in self.market_expiry]
@@ -93,6 +98,8 @@ class Strategy():
         plt.show()
         
     def short_straddle(self):#sstrd
+        print('\n--------------------------------Output Parameters--------------------------------\n')
+        
         print(f"Sell ATM {self.HS} CE, Sell ATM {self.LS} PE")
         ce_payoff = [(self.premium1 - max(expiry - self.HS, 0 )) for expiry in self.market_expiry]
         pe_payoff = [(self.premium2 - max(self.LS - expiry, 0 ) ) for expiry in self.market_expiry]
@@ -113,6 +120,8 @@ class Strategy():
         plt.show()
     
     def bull_put_spread(self):#bps
+        print('\n--------------------------------Output Parameters--------------------------------\n')
+        
         print(f"Buy OTM {self.LS} PE, Sell ITM {self.HS} PE")
         hs_pe_payoff = [(self.premium1 - max(self.HS - expiry, 0 ) ) for expiry in self.market_expiry]
         ls_pe_payoff = [(max(self.LS - expiry, 0 ) - self.premium2) for expiry in self.market_expiry]
@@ -134,6 +143,8 @@ class Strategy():
         plt.show()
         
     def bull_call_spread(self):#bcs
+        print('\n--------------------------------Output Parameters--------------------------------\n')
+        
         print(f"Buy ITM {self.LS} CE, Sell OTM {self.HS} CE")
         hs_pe_payoff = [(self.premium1 - max(expiry - self.HS, 0 ) ) for expiry in self.market_expiry]
         ls_pe_payoff = [(max(expiry - self.LS, 0 ) - self.premium2) for expiry in self.market_expiry]
@@ -155,6 +166,8 @@ class Strategy():
         plt.show()
     
     def bear_put_spread(self):#beps
+        print('\n--------------------------------Output Parameters--------------------------------\n')
+        
         print(f"Buy ITM {self.HS} PE, Sell OTM {self.LS} PE")
         hs_pe_payoff = [(max(self.HS - expiry, 0 ) - self.premium1) for expiry in self.market_expiry]
         ls_pe_payoff = [(self.premium2 - max(self.LS - expiry, 0 ) ) for expiry in self.market_expiry]
@@ -176,6 +189,8 @@ class Strategy():
         plt.show()
         
     def bear_call_spread(self):#becs
+        print('\n--------------------------------Output Parameters--------------------------------\n')
+        
         print(f"Buy OTM {self.HS} CE, Sell ITM {self.LS} CE")
         hs_ce_payoff = [(max(expiry - self.HS, 0 ) - self.premium1) for expiry in self.market_expiry]
         ls_ce_payoff = [(self.premium2 - max(expiry - self.LS, 0 ) ) for expiry in self.market_expiry]
@@ -197,6 +212,8 @@ class Strategy():
         plt.show()
     
     def call_ratio_back_spread(self):#crbs
+        print('\n--------------------------------Output Parameters--------------------------------\n')
+        
         print(f"Buy 2 OTM {self.HS} CE, Sell ITM {self.LS} CE")
         hs_ce_payoff = [(2*max(expiry - self.HS, 0 ) - self.premium1) for expiry in self.market_expiry]
         ls_ce_payoff = [(self.premium2 - max(expiry - self.LS, 0 ) ) for expiry in self.market_expiry]
@@ -219,6 +236,8 @@ class Strategy():
         plt.show()
         
     def put_ratio_back_spread(self):#prbs
+        print('\n--------------------------------Output Parameters--------------------------------\n')
+        
         print(f"Buy 2 OTM {self.LS} PE, Sell ITM {self.HS} PE")
         hs_pe_payoff = [(self.premium1 - max(self.HS - expiry, 0 ) ) for expiry in self.market_expiry]
         ls_pe_payoff = [(2*max(self.LS - expiry, 0 ) - self.premium2 ) for expiry in self.market_expiry]
