@@ -6,5 +6,6 @@
 
 ## How to use this:
 - Fork this repo to your github then Clone this repo using `git clone <https link of this repo>`
+- Or Just Download this file(zip) from `code>download as zip` option
 - change directory to this repo `cd Basic_Option_Strategy_Chooser`
 - Run the runner.py using `python runner.py` and follow along
