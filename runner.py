@@ -75,6 +75,8 @@ def Call_strategy():
             LS, HS, hsp, lsp = inp_parameters(True, True, spot)
             crbs = Strategy(LS, spot, HS, hsp, lsp)
             crbs.call_ratio_back_spread()
+            wanna_proceed()
+
 
         if inp == 2:
             print("This Strategy requires you to: Buy OTM PE, Sell ITM PE\n")
@@ -82,6 +84,8 @@ def Call_strategy():
             LS, HS, hsp, lsp = inp_parameters(True, True, spot)
             bps = Strategy(LS, spot, HS, hsp, lsp)
             bps.bull_put_spread()
+            wanna_proceed()
+
 
         if inp == 3:
             print("This Strategy requires you to: Buy ITM CE, Sell OTM CE\n")
@@ -89,6 +93,8 @@ def Call_strategy():
             LS, HS, hsp, lsp = inp_parameters(True, True, spot)
             bcs = Strategy(LS, spot, HS, hsp, lsp)
             bcs.bull_call_spread()
+            wanna_proceed()
+
 
     if sentiment == 'be':
         print(f'\nBearish Strategies you can call are:\n1.{x4}(Highly bearish)\n2.{x5}(Moderately bullish)\n3.{x6}(Moderately bullish)\n')
@@ -102,6 +108,8 @@ def Call_strategy():
             LS, HS, hsp, lsp = inp_parameters(True, True, spot)
             prbs = Strategy(LS, spot, HS, hsp, lsp)
             prbs.put_ratio_back_spread()
+            wanna_proceed()
+
 
         if inp == 2:
             print("This Strategy requires you to: Buy ITM PE, Sell OTM PE\n")
@@ -109,6 +117,8 @@ def Call_strategy():
             LS, HS, hsp, lsp = inp_parameters(True, True, spot)
             beps = Strategy(LS, spot, HS, hsp, lsp)
             beps.bear_put_spread()
+            wanna_proceed()
+
         
         if inp == 3:
             print("This Strategy requires you to: Buy OTM CE, Sell ITM CE\n")
@@ -116,6 +126,8 @@ def Call_strategy():
             LS, HS, hsp, lsp = inp_parameters(True, True, spot)
             becs = Strategy(LS, spot, HS, hsp, lsp)
             becs.bear_call_spread()
+            wanna_proceed()
+
 
     if sentiment == 'r':
         print(f'\nRange Bound/Market Neutral Strategies you can call are:\n1.{x7}\n2.{x8}\n')
@@ -129,6 +141,7 @@ def Call_strategy():
             LS, HS, hsp, lsp = inp_parameters(False, False, spot)
             sstrd = Strategy(LS, spot, HS, hsp, lsp)
             sstrd.short_straddle()
+            wanna_proceed()
 
         if inp == 2:
             print("This Strategy requires you to: Sell OTM CE, Sell OTM PE\n")
@@ -136,6 +149,7 @@ def Call_strategy():
             LS, HS, hsp, lsp = inp_parameters(True, True, spot)
             sstrg = Strategy(LS, spot, HS, hsp, lsp)
             sstrg.short_strangle()
+            wanna_proceed()
 
     if sentiment == 'mn':
         print(f'\nMarket Neutral Strategies you can call are:\n1.{x9}\n2.{x10}\n')
@@ -149,6 +163,7 @@ def Call_strategy():
             LS, HS, hsp, lsp = inp_parameters(False, False, spot)
             lstrd = Strategy(LS, spot, HS, hsp, lsp)
             lstrd.long_straddle()
+            wanna_proceed()
 
         if inp == 2:
             print("This Strategy requires you to: Buy OTM CE, Buy OTM PE\n")
@@ -156,13 +171,13 @@ def Call_strategy():
             LS, HS, hsp, lsp = inp_parameters(True, True, spot)
             lstrg = Strategy(LS, spot, HS, hsp, lsp)
             lstrg.long_strangle()
+            wanna_proceed() #Using recursion to call the Strategy function again
 
     
     
 if __name__=='__main__':
 
     Call_strategy()
-    wanna_proceed()
 
 
 
