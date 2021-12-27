@@ -50,8 +50,8 @@ def inp_parameters(LS, HS, spot):
         LS = int(input('input lower strike?\t'))
         HS = int(input('input higher strike?\t'))
 
-    hsp = int(input('input premium of higher strike?\t'))
-    lsp = int(input('input premium of lower strike?\t'))
+    hsp = int(input('input premium of higher strike/CE in case of ATM option?\t'))
+    lsp = int(input('input premium of lower strike/PE in case of ATM option?\t'))
     return LS, HS, hsp, lsp
 
 

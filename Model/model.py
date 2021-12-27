@@ -131,7 +131,7 @@ class Strategy():
         net_credit = self.premium1 - self.premium2
         maxprofit = net_credit
         spread = self.HS - self.LS
-        maxloss =   spread - net_credit
+        maxloss =   -(spread - net_credit)
         breakeven = self.HS - net_credit       
         print(f'Breakeven_point:{breakeven}\nMaxProfit:{maxprofit}\nMaxLoss:{maxloss}\nNet_credit:{net_credit}')
         print(self.lsdf)
@@ -177,8 +177,8 @@ class Strategy():
         spread = self.HS - self.LS
         net_credit = -(self.premium1 - self.premium2)
         maxloss =   net_credit
-        maxprofit = spread - net_credit        
-        breakeven = self.HS - net_credit       
+        maxprofit = spread + net_credit        
+        breakeven = self.HS + net_credit       
         print(f'Breakeven_point:{breakeven}\nMaxProfit:{maxprofit}\nMaxLoss:{maxloss}\nNet_credit:{net_credit}')
         print(self.lsdf)
         plt.plot(self.lsdf['market_expiry'], self.lsdf['strategy_payoff'])
@@ -196,11 +196,11 @@ class Strategy():
         ls_ce_payoff = [(self.premium2 - max(expiry - self.LS, 0 ) ) for expiry in self.market_expiry]
         self.lsdf['otm_ce_payoff'] = hs_ce_payoff
         self.lsdf['itm_ce_payoff'] = ls_ce_payoff        
-        lsdf['strategy_payoff'] = self.lsdf.otm_ce_payoff + self.lsdf.itm_ce_payoff        
+        self.lsdf['strategy_payoff'] = self.lsdf.otm_ce_payoff + self.lsdf.itm_ce_payoff        
         spread = self.HS - self.LS
-        net_credit = (self.premium1 - self.premium2)
+        net_credit = -(self.premium1 - self.premium2)
         maxprofit =   net_credit
-        maxloss = spread - net_credit        
+        maxloss = -(spread - net_credit )       
         breakeven = self.LS + net_credit       
         print(f'Breakeven_point:{breakeven}\nMaxProfit:{maxprofit}\nMaxLoss:{maxloss}\nNet_credit:{net_credit}')
         print(self.lsdf)
