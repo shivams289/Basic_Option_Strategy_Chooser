@@ -5,6 +5,7 @@ import math
 import datetime
 import seaborn as sns
 import matplotlib.pyplot as plt
+plt.style.use('seaborn')
 
 #Maximize (delta+gamma -theta) while chossing strike
 #LS -> Lower strike 
