@@ -58,4 +58,34 @@ with col5:
 
 crbs = Strategy(LS, spot, HS, hsp, lsp)
 st.subheader("Payoff Chart And OutPut Parameters")
-crbs.call_ratio_back_spread()
+
+if opt == "call_ratio_back_spread":
+    crbs.call_ratio_back_spread()
+
+elif opt == "bull_put_spread":
+    crbs.bull_put_spread()
+
+elif opt == "bull_call_spread":
+    crbs.bull_call_spread()
+
+
+elif opt == "put_ratio_back_spread":
+    crbs.put_ratio_back_spread()
+
+elif opt == "bear_put_spread":
+    crbs.bear_put_spread()
+
+elif opt == "bear_call_spread":
+    crbs.bear_call_spread()
+
+elif opt == "long_straddle":
+    crbs.long_straddle()
+
+elif opt == "long_strangle":
+    crbs.long_strangle()
+
+elif opt == "short_straddle":
+    crbs.short_straddle()
+
+else:
+    crbs.short_strangle()
