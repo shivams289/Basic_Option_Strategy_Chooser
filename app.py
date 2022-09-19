@@ -57,4 +57,5 @@ with col5:
     lsp = st.number_input("Low Strike Premium", min_value=1)
 
 crbs = Strategy(LS, spot, HS, hsp, lsp)
+st.subheader("Payoff Chart And OutPut Parameters")
 crbs.call_ratio_back_spread()

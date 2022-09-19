@@ -4,6 +4,7 @@ import math
 import datetime
 import seaborn as sns
 import matplotlib.pyplot as plt
+import streamlit as st
 
 plt.style.use("seaborn")
 
@@ -39,10 +40,8 @@ class Strategy:
         )
 
     def long_strangle(self):  # lstrg
-        print(
-            "\n--------------------------------Output Parameters--------------------------------\n"
-        )
-        print(f"Buy OTM {self.HS} CE, Buy OTM {self.LS} PE")
+
+        st.caption(f"Buy OTM {self.HS} CE, Buy OTM {self.LS} PE")
         ce_payoff = [
             (max(expiry - self.HS, 0) - self.premium1) for expiry in self.market_expiry
         ]
@@ -56,23 +55,34 @@ class Strategy:
         maxloss = net_credit
         lower_breakeven = self.LS + maxloss
         upper_breakeven = self.HS - maxloss
-        print(
-            f"Breakeven_points:{(lower_breakeven, upper_breakeven)}\nMaxloss:{maxloss}\nNet_Credit:{net_credit}"
-        )
-        print(self.lsdf)
+
+        col1, col2, col3, col4 = st.columns(4)
+        with col1:
+            st.metric("Lower Breakeven", lower_breakeven)
+
+        with col2:
+            st.metric("Upper Breakeven", upper_breakeven)
+
+        with col3:
+            st.metric("Maxloss", maxloss)
+
+        with col4:
+            st.metric("Net_credit", net_credit)
+
+        fig = plt.figure()
+
         plt.plot(self.lsdf["market_expiry"], self.lsdf["strategy_payoff"])
         plt.axhline(y=0, color="r", linestyle="-")
         plt.title("Payoff of Long Strangle")
         plt.xlabel("Market Expiry")
         plt.ylabel("Payoff")
-        plt.show()
+        st.pyplot(fig)
+        st.subheader("Strategy Payoff Table For Different Market Expiries")
+        st.table(self.lsdf)
 
     def short_strangle(self):  # sstrg
-        print(
-            "\n--------------------------------Output Parameters--------------------------------\n"
-        )
 
-        print(f"Sell OTM {self.HS} CE, Sell OTM {self.LS} PE")
+        st.caption(f"Sell OTM {self.HS} CE, Sell OTM {self.LS} PE")
         ce_payoff = [
             (self.premium1 - max(expiry - self.HS, 0)) for expiry in self.market_expiry
         ]
@@ -86,23 +96,34 @@ class Strategy:
         maxprofit = net_credit
         lower_breakeven = self.LS - net_credit
         upper_breakeven = self.HS + net_credit
-        print(
-            f"Breakeven_points:{(lower_breakeven, upper_breakeven)}\nMaxProfit:{maxprofit}\nNet_credit:{net_credit}"
-        )
-        print(self.lsdf)
+
+        col1, col2, col3, col4 = st.columns(4)
+        with col1:
+            st.metric("Lower Breakeven", lower_breakeven)
+
+        with col2:
+            st.metric("Upper Breakeven", upper_breakeven)
+
+        with col3:
+            st.metric("Max Profit", maxprofit)
+
+        with col4:
+            st.metric("Net_credit", net_credit)
+
+        fig = plt.figure()
+
         plt.plot(self.lsdf["market_expiry"], self.lsdf["strategy_payoff"])
         plt.axhline(y=0, color="r", linestyle="-")
         plt.title("Payoff of Short Strangle")
         plt.xlabel("Market Expiry")
         plt.ylabel("Payoff")
-        plt.show()
+        st.pyplot(fig)
+        st.subheader("Strategy Payoff Table For Different Market Expiries")
+        st.table(self.lsdf)
 
     def long_straddle(self):  # lstrd
-        print(
-            "\n--------------------------------Output Parameters--------------------------------\n"
-        )
 
-        print(f"Buy ATM {self.HS} CE, Buy ATM {self.LS} PE")
+        st.caption(f"Buy ATM {self.HS} CE, Buy ATM {self.LS} PE")
         ce_payoff = [
             (max(expiry - self.HS, 0) - self.premium1) for expiry in self.market_expiry
         ]
@@ -116,23 +137,34 @@ class Strategy:
         maxloss = net_credit
         lower_breakeven = self.LS + net_credit
         upper_breakeven = self.HS - net_credit
-        print(
-            f"Breakeven_points:{(lower_breakeven, upper_breakeven)}\nMaxloss:{maxloss}\nNet_credit:{net_credit}"
-        )
-        print(self.lsdf)
+
+        col1, col2, col3, col4 = st.columns(4)
+        with col1:
+            st.metric("Lower Breakeven", lower_breakeven)
+
+        with col2:
+            st.metric("Upper Breakeven", upper_breakeven)
+
+        with col3:
+            st.metric("Max Loss", maxloss)
+
+        with col4:
+            st.metric("Net_credit", net_credit)
+
+        fig = plt.figure()
+
         plt.plot(self.lsdf["market_expiry"], self.lsdf["strategy_payoff"])
         plt.axhline(y=0, color="r", linestyle="-")
         plt.title("Payoff of Long Straddle")
         plt.xlabel("Market Expiry")
         plt.ylabel("Payoff")
-        plt.show()
+        st.pyplot(fig)
+        st.subheader("Strategy Payoff Table For Different Market Expiries")
+        st.table(self.lsdf)
 
     def short_straddle(self):  # sstrd
-        print(
-            "\n--------------------------------Output Parameters--------------------------------\n"
-        )
 
-        print(f"Sell ATM {self.HS} CE, Sell ATM {self.LS} PE")
+        st.caption(f"Sell ATM {self.HS} CE, Sell ATM {self.LS} PE")
         ce_payoff = [
             (self.premium1 - max(expiry - self.HS, 0)) for expiry in self.market_expiry
         ]
@@ -146,23 +178,34 @@ class Strategy:
         maxprofit = net_credit
         lower_breakeven = self.LS - net_credit
         upper_breakeven = self.HS + net_credit
-        print(
-            f"Breakeven_points:{(lower_breakeven, upper_breakeven)}\nMaxProfit:{maxprofit}\nNet_credit:{net_credit}"
-        )
-        print(self.lsdf)
+
+        col1, col2, col3, col4 = st.columns(4)
+        with col1:
+            st.metric("Lower Breakeven", lower_breakeven)
+
+        with col2:
+            st.metric("Upper Breakeven", upper_breakeven)
+
+        with col3:
+            st.metric("Max Profit", maxprofit)
+
+        with col4:
+            st.metric("Net_credit", net_credit)
+
+        fig = plt.figure()
+
         plt.plot(self.lsdf["market_expiry"], self.lsdf["strategy_payoff"])
         plt.axhline(y=0, color="r", linestyle="-")
         plt.title("Payoff of Short Straddle")
         plt.xlabel("Market Expiry")
         plt.ylabel("Payoff")
-        plt.show()
+        st.pyplot(fig)
+        st.subheader("Strategy Payoff Table For Different Market Expiries")
+        st.table(self.lsdf)
 
     def bull_put_spread(self):  # bps
-        print(
-            "\n--------------------------------Output Parameters--------------------------------\n"
-        )
 
-        print(f"Buy OTM {self.LS} PE, Sell ITM {self.HS} PE")
+        st.caption(f"Buy OTM {self.LS} PE, Sell ITM {self.HS} PE")
         hs_pe_payoff = [
             (self.premium1 - max(self.HS - expiry, 0)) for expiry in self.market_expiry
         ]
@@ -177,23 +220,34 @@ class Strategy:
         spread = self.HS - self.LS
         maxloss = -(spread - net_credit)
         breakeven = self.HS - net_credit
-        print(
-            f"Breakeven_point:{breakeven}\nMaxProfit:{maxprofit}\nMaxLoss:{maxloss}\nNet_credit:{net_credit}"
-        )
-        print(self.lsdf)
+
+        col1, col2, col3, col4 = st.columns(4)
+        with col1:
+            st.metric("Breakeven", breakeven)
+
+        with col2:
+            st.metric("Max Profit", maxprofit)
+
+        with col3:
+            st.metric("Max Loss", maxloss)
+
+        with col4:
+            st.metric("Net_credit", net_credit)
+
+        fig = plt.figure()
+
         plt.plot(self.lsdf["market_expiry"], self.lsdf["strategy_payoff"])
         plt.axhline(y=0, color="r", linestyle="-")
         plt.title("Payoff of Bull Put Spread")
         plt.xlabel("Market Expiry")
         plt.ylabel("Payoff")
-        plt.show()
+        st.pyplot(fig)
+        st.subheader("Strategy Payoff Table For Different Market Expiries")
+        st.table(self.lsdf)
 
     def bull_call_spread(self):  # bcs
-        print(
-            "\n--------------------------------Output Parameters--------------------------------\n"
-        )
 
-        print(f"Buy ITM {self.LS} CE, Sell OTM {self.HS} CE")
+        st.caption(f"Buy ITM {self.LS} CE, Sell OTM {self.HS} CE")
         hs_pe_payoff = [
             (self.premium1 - max(expiry - self.HS, 0)) for expiry in self.market_expiry
         ]
@@ -211,20 +265,32 @@ class Strategy:
         print(
             f"Breakeven_point:{breakeven}\nMaxProfit:{maxprofit}\nMaxLoss:{maxloss}\nNet_credit:{net_credit}"
         )
-        print(self.lsdf)
+        col1, col2, col3, col4 = st.columns(4)
+        with col1:
+            st.metric("Breakeven", breakeven)
+
+        with col2:
+            st.metric("Max Profit", maxprofit)
+
+        with col3:
+            st.metric("Max Loss", maxloss)
+
+        with col4:
+            st.metric("Net_credit", net_credit)
+
+        fig = plt.figure()
         plt.plot(self.lsdf["market_expiry"], self.lsdf["strategy_payoff"])
         plt.axhline(y=0, color="r", linestyle="-")
         plt.title("Payoff of Bull Call Spread")
         plt.xlabel("Market Expiry")
         plt.ylabel("Payoff")
-        plt.show()
+        st.pyplot(fig)
+        st.subheader("Strategy Payoff Table For Different Market Expiries")
+        st.table(self.lsdf)
 
     def bear_put_spread(self):  # beps
-        print(
-            "\n--------------------------------Output Parameters--------------------------------\n"
-        )
 
-        print(f"Buy ITM {self.HS} PE, Sell OTM {self.LS} PE")
+        st.caption(f"Buy ITM {self.HS} PE, Sell OTM {self.LS} PE")
         hs_pe_payoff = [
             (max(self.HS - expiry, 0) - self.premium1) for expiry in self.market_expiry
         ]
@@ -239,23 +305,33 @@ class Strategy:
         maxloss = net_credit
         maxprofit = spread + net_credit
         breakeven = self.HS + net_credit
-        print(
-            f"Breakeven_point:{breakeven}\nMaxProfit:{maxprofit}\nMaxLoss:{maxloss}\nNet_credit:{net_credit}"
-        )
-        print(self.lsdf)
+
+        col1, col2, col3, col4 = st.columns(4)
+        with col1:
+            st.metric("Breakeven", breakeven)
+
+        with col2:
+            st.metric("Maxprofit", maxprofit)
+
+        with col3:
+            st.metric("Maxloss", maxloss)
+
+        with col4:
+            st.metric("Net_credit", net_credit)
+
+        fig = plt.figure()
         plt.plot(self.lsdf["market_expiry"], self.lsdf["strategy_payoff"])
         plt.axhline(y=0, color="r", linestyle="-")
         plt.title("Payoff of Bear Put Spread")
         plt.xlabel("Market Expiry")
         plt.ylabel("Payoff")
-        plt.show()
+        st.pyplot(fig)
+        st.subheader("Strategy Payoff Table For Different Market Expiries")
+        st.table(self.lsdf)
 
     def bear_call_spread(self):  # becs
-        print(
-            "\n--------------------------------Output Parameters--------------------------------\n"
-        )
 
-        print(f"Buy OTM {self.HS} CE, Sell ITM {self.LS} CE")
+        st.caption(f"Buy OTM {self.HS} CE, Sell ITM {self.LS} CE")
         hs_ce_payoff = [
             (max(expiry - self.HS, 0) - self.premium1) for expiry in self.market_expiry
         ]
@@ -270,23 +346,34 @@ class Strategy:
         maxprofit = net_credit
         maxloss = -(spread - net_credit)
         breakeven = self.LS + net_credit
-        print(
-            f"Breakeven_point:{breakeven}\nMaxProfit:{maxprofit}\nMaxLoss:{maxloss}\nNet_credit:{net_credit}"
-        )
-        print(self.lsdf)
+
+        col1, col2, col3, col4 = st.columns(4)
+        with col1:
+            st.metric("Breakeven", breakeven)
+
+        with col2:
+            st.metric("Maxprofit", maxprofit)
+
+        with col3:
+            st.metric("Maxloss", maxloss)
+
+        with col4:
+            st.metric("Net_credit", net_credit)
+
+        fig = plt.figure()
         plt.plot(self.lsdf["market_expiry"], self.lsdf["strategy_payoff"])
         plt.axhline(y=0, color="r", linestyle="-")
         plt.title("Payoff of Bear Call Spread")
         plt.xlabel("Market Expiry")
         plt.ylabel("Payoff")
-        plt.show()
+        st.pyplot(fig)
+
+        st.subheader("Strategy Payoff Table For Different Market Expiries")
+        st.table(self.lsdf)
 
     def call_ratio_back_spread(self):  # crbs
-        print(
-            "\n--------------------------------Output Parameters--------------------------------\n"
-        )
 
-        print(f"Buy 2 OTM {self.HS} CE, Sell ITM {self.LS} CE")
+        st.caption(f"Bought 2 OTM {self.HS} CE, Sold ITM {self.LS} CE")
         hs_ce_payoff = [
             (2 * max(expiry - self.HS, 0) - self.premium1)
             for expiry in self.market_expiry
@@ -303,23 +390,32 @@ class Strategy:
         lower_breakeven = self.LS + net_credit
         upper_breakeven = self.HS - maxloss
 
-        print(
-            f"Breakeven_points:{(lower_breakeven, upper_breakeven)}\nMaxloss:{maxloss}\nNet_credit:{net_credit}"
-        )
-        print(self.lsdf)
+        col1, col2, col3, col4 = st.columns(4)
+        with col1:
+            st.metric("Lower Breakeven", lower_breakeven)
+
+        with col2:
+            st.metric("Upper Breakeven", upper_breakeven)
+
+        with col3:
+            st.metric("Maxloss", maxloss)
+
+        with col4:
+            st.metric("Net_credit", net_credit)
+
+        fig = plt.figure()
         plt.plot(self.lsdf["market_expiry"], self.lsdf["strategy_payoff"])
         plt.axhline(y=0, color="r", linestyle="-")
         plt.title("Payoff of Call Ratio Back Spread")
         plt.xlabel("Market Expiry")
         plt.ylabel("Payoff")
-        plt.show()
+        st.pyplot(fig)
+
+        st.subheader("Strategy Payoff Table For Different Market Expiries")
+        st.table(self.lsdf)
 
     def put_ratio_back_spread(self):  # prbs
-        print(
-            "\n--------------------------------Output Parameters--------------------------------\n"
-        )
-
-        print(f"Buy 2 OTM {self.LS} PE, Sell ITM {self.HS} PE")
+        st.caption(f"Buy 2 OTM {self.LS} PE, Sell ITM {self.HS} PE")
         hs_pe_payoff = [
             (self.premium1 - max(self.HS - expiry, 0)) for expiry in self.market_expiry
         ]
@@ -337,13 +433,25 @@ class Strategy:
         lower_breakeven = self.LS + maxloss
         upper_breakeven = self.LS - maxloss
 
-        print(
-            f"Breakeven_points:{(lower_breakeven, upper_breakeven)}\nMaxloss:{maxloss}\nNet_credit:{net_credit}"
-        )
-        print(self.lsdf)
+        col1, col2, col3, col4 = st.columns(4)
+        with col1:
+            st.metric("Lower Breakeven", lower_breakeven)
+
+        with col2:
+            st.metric("Upper Breakeven", upper_breakeven)
+
+        with col3:
+            st.metric("Maxloss", maxloss)
+
+        with col4:
+            st.metric("Net_credit", net_credit)
+
+        fig = plt.figure()
         plt.plot(self.lsdf["market_expiry"], self.lsdf["strategy_payoff"])
         plt.axhline(y=0, color="r", linestyle="-")
         plt.title("Payoff of Put Ratio Back Spread")
         plt.xlabel("Market Expiry")
         plt.ylabel("Payoff")
-        plt.show()
+        st.pyplot(fig)
+        st.subheader("Strategy Payoff Table For Different Market Expiries")
+        st.table(self.lsdf)
